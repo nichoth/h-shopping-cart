@@ -1,6 +1,6 @@
 # h shopping cart
 
-Pass in a hyperscript function and data object, return HTML.
+Work in progress. Pass in a hyperscript function and data object, return HTML.
 
 
 ## install
