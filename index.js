@@ -1,55 +1,36 @@
 var csjs = require('csjs')
+var delButton = require('h-buttons/lib/delete')
+var styles = require('./index.csjs')
 
 module.exports = render
-var styles = module.exports.styles = csjs`
-  .cart {
-  }
-
-  .row {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  .cell {
-    flex: 1;
-  }
-
-  .small extends .cell{
-    flex: 0.3;
-  }
-
-  .title {
-    text-align: left;
-  }
-`
 
 function render(bel, data) {
   var rows = data.rows
 
   function rowElmt(row) {
     return bel`
-      <div class="${styles.row}">
-        <div class="${styles.small}">x</div>
-        ${Object.keys(row).map(function(k) {
-          var cl = k + ' ' + (k === 'title' ? styles.cell : styles.small)
-          return bel`<div class="${cl}">${row[k]}</div>`
-        })}
+      <div class="${styles.row} h-cart-row">
+        <div class="${styles.cell} ${styles['btn-col']}">
+          ${row.delete}
+        </div>
+        <div class="${styles['cell-title']}">${row.title}</div>
+        ${cellElmt(row.priceEach)}
+        ${cellElmt(row.quantity)}
+        ${cellElmt(row.priceTotal)}
       </div>
     `
   }
 
+  function cellElmt(content) {
+    return bel`<div class="${styles.cell}">${content}</div>`
+  }
+
   function headElmt(labels) {
     return bel`
-      <thead>
-        <tr>
-          <th class="${styles.small}"></th>
-          ${labels.map(function(l) {
-            return bel`
-              <th>${l}</th>
-            `
-          })}
-        </tr>
-      </thead>
+      <div class="${styles.row}" h-cart-head>
+        <div class="${styles['th-title']}">${labels.title}</div>
+
+      </div>
     `
   }
 
@@ -66,7 +47,7 @@ function render(bel, data) {
   }
 
   return bel`
-    <div class="${styles.cart} h-shopping-cart">
+    <div class="${styles.cart} h-cart">
       ${rows.map(rowElmt)}
     </div>
   `
