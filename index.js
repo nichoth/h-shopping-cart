@@ -2,22 +2,20 @@ var csjs = require('csjs')
 
 module.exports = render
 var styles = module.exports.styles = csjs`
-  thead {
-    border-bottom: 2px solid gray;
+  .cart {
   }
 
-  td, table {
-    border: 1px solid black;
+  .row {
+    display: flex;
+    flex-flow: row wrap;
   }
 
-  table {
-    width: 100%;
-    text-align: center;
+  .cell {
+    flex: 1;
   }
 
-  .small {
-    width: 5%;
-    min-width: 1em;
+  .small extends .cell{
+    flex: 0.3;
   }
 
   .title {
@@ -28,19 +26,19 @@ var styles = module.exports.styles = csjs`
 function render(bel, data) {
   var rows = data.rows
 
-  function tableRow(row) {
+  function rowElmt(row) {
     return bel`
-      <tr>
-        <td>x</td>
-        ${Object.keys(row).map(function(k){
-          var cl = k
-          return bel`<td class="${cl}">${row[k]}</td>`
+      <div class="${styles.row}">
+        <div class="${styles.small}">x</div>
+        ${Object.keys(row).map(function(k) {
+          var cl = k + ' ' + (k === 'title' ? styles.cell : styles.small)
+          return bel`<div class="${cl}">${row[k]}</div>`
         })}
-      </tr>
+      </div>
     `
   }
 
-  function tHead(labels) {
+  function headElmt(labels) {
     return bel`
       <thead>
         <tr>
@@ -68,12 +66,8 @@ function render(bel, data) {
   }
 
   return bel`
-    <table>
-      ${tHead(data.head)}
-      <tbody>
-        ${rows.map(tableRow)}
-      </tbody>
-      ${tFoot(data.foot)}
-    </table>
+    <div class="${styles.cart} h-shopping-cart">
+      ${rows.map(rowElmt)}
+    </div>
   `
 }
