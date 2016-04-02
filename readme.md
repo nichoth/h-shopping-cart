@@ -8,6 +8,11 @@ Work in progress. Pass in a hyperscript function and data object, return HTML.
     $ npm install h-shopping-cart
 
 
+## demo
+[http://demos.nichoth.com/h-shopping-cart](http://demos.nichoth.com/h-shopping-cart
+)
+
+
 ## example
 
 ```js
