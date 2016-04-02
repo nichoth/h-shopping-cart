@@ -13,18 +13,18 @@ Work in progress. Pass in a hyperscript function and data object, return HTML.
 ```js
 var renderCart = require('h-shopping-cart')
 var bel = require('bel')
+var style = require('h-shopping-cart/index.csjs')  // csjs styles
 
 var cart = renderCart(bel, {
-  head: ['Product', 'Qty', '', '$'],
   rows: [
     {
+      delete: bel`<button>delete</button>`
       title: 'Example Product',
       quantity: '3',
       priceEach: '$7',
       priceTotal: '$' + 7*3
     }
-  ],
-  foot: ['','','','total','$21']
+  ]
 })
 
 document.body.appendChild(cart)
