@@ -15,7 +15,7 @@
     "wzrd": "^1.3.1"
   },
   "name": "h-shopping-cart",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Static render function for shopping cart widget",
   "main": "index.js",
   "directories": {
