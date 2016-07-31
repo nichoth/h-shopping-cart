@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wzrd --path=example example/index.js:bundle.js -- -dv -p [csjs-extractify -o example/style.css]",
     "build": "browserify index.js -p [csjs-extractify -o style.css] > /dev/null",
+    "postversion": "git push && git push --tags",
     "prepublish": "npm run build"
   },
   "dependencies": {
