@@ -1,23 +1,23 @@
 {
+  "name": "h-shopping-cart",
+  "version": "0.0.5",
+  "description": "Static render function for shopping cart widget",
+  "main": "index.js",
   "scripts": {
     "dev": "wzrd --path=example example/index.js:bundle.js -- -dv -p [csjs-extractify -o example/style.css]",
     "build": "browserify index.js -p [csjs-extractify -o style.css] > /dev/null",
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "csjs": "^1.0.1",
-    "h-buttons": "0.0.1"
+    "csjs": "^1.0.1"
   },
   "devDependencies": {
     "bel": "^4.3.1",
     "csjs-extractify": "^1.0.0-alpha.0",
     "csjs-injectify": "^1.0.0",
+    "h-buttons": "0.0.1",
     "wzrd": "^1.3.1"
   },
-  "name": "h-shopping-cart",
-  "version": "0.0.5",
-  "description": "Static render function for shopping cart widget",
-  "main": "index.js",
   "directories": {
     "example": "example"
   },

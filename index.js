@@ -1,5 +1,4 @@
 var csjs = require('csjs')
-var delButton = require('h-buttons/lib/delete')
 var styles = require('./index.csjs')
 
 module.exports = render
@@ -13,7 +12,7 @@ function render(bel, data) {
         <div class="${styles.cell} ${styles['btn-col']}">
           ${row.delete}
         </div>
-        <div class="${styles['cell-title']}">${row.title}</div>
+        <div class="h-cart-title ${styles['cell-title']}">${row.title}</div>
         ${cellElmt(row.priceEach)}
         ${cellElmt(row.quantity)}
         ${cellElmt(row.priceTotal)}
@@ -22,7 +21,7 @@ function render(bel, data) {
   }
 
   function cellElmt(content) {
-    return bel`<div class="${styles.cell}">${content}</div>`
+    return bel`<div class="h-cart-cell ${styles.cell}">${content}</div>`
   }
 
   function headElmt(labels) {
